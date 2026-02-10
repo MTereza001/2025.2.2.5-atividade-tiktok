@@ -1,0 +1,230 @@
+:root {
+    --bg-black: #010101;
+    --border-gray: #2f2f2f;
+    --tiktok-red: #fe2c55;
+    --tiktok-cyan: #25f4ee;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--bg-black);
+    color: var(--white);
+    overflow: hidden; 
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    border-right: 0.5px solid var(--border-gray);
+    padding: 20px 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-container {
+    padding: 0 12px 24px 12px;
+}
+
+.tiktok-logo { 
+    width: 100px; 
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none; 
+    color: var(--white);
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-links a.active {
+    color: var(--tiktok-red); 
+}
+
+.nav-links .icon {
+    font-size: 24px;
+    margin-right: 12px;
+    width: 32px;
+    text-align: center;
+}
+
+.nav-links .text {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--border-gray);
+    margin: 16px 12px;
+}
+
+.sidebar-footer {
+    padding: 0 12px;
+}
+
+.sidebar-footer p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--tiktok-red);
+    color: var(--tiktok-red);
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.feed {
+    flex: 1;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; 
+}
+
+.feed::-webkit-scrollbar {
+    display: none; 
+}
+
+.video-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 20px 0;
+}
+
+.video-player-wrapper {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 9/16; 
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.user-profile { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px solid var(--white); 
+}
+
+.username {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.description {
+    font-size: 15px;
+    margin-bottom: 12px;
+    max-width: 80%;
+}
+
+.content-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.action-item {
+    font-size: 26px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.action-item span {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #000;
+    border-top: 1px solid var(--border-gray);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.add-button {
+    background: linear-gradient(to right, var(--tiktok-cyan) 20%, #fff 20% 80%, var(--tiktok-red) 80%);
+    border: none;
+    padding: 4px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .sidebar { display: none; }
+    .mobile-nav { display: flex; }
+    .video-container { padding: 0; }
+    .video-player-wrapper { 
+        height: 100vh; 
+        width: 100vw; 
+        border-radius: 0; 
+    }
+}
